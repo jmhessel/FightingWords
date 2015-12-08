@@ -38,7 +38,7 @@ def bayesCompareLanguage(l1, l2, ngram = 1, prior=.01, cv = None):
     # Now sum over languages...
     vocabSize = len(cv.vocabulary_)
     print "Vocab size is {}".format(vocabSize)
-    if type(priors) is float:
+    if type(prior) is float:
         priors = np.array([prior for i in range(vocabSize)])
     else:
         priors = prior
