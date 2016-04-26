@@ -7,7 +7,7 @@ def basic_sanitize(in_string):
     '''Returns a very roughly sanitized version of the input string.'''
     return_string = ' '.join(in_string.encode('ascii', 'ignore').strip().split())
     return_string = ''.join(ch for ch in return_string if ch not in exclude)
-    return_string = returnString.lower()
+    return_string = return_string.lower()
     return_string = ' '.join(return_string.split())
     return return_string
 
@@ -58,7 +58,7 @@ def bayes_compare_language(l1, l2, ngram = 1, prior=.01, cv = None):
         #compute variance on delta
         var = 1./(count_matrix[0,i] + priors[i]) + 1./(count_matrix[1,i] + priors[i])
         #store final score
-        zScores[i] = delta/np.sqrt(var)
+        z_scores[i] = delta/np.sqrt(var)
     index_to_term = {v:k for k,v in cv.vocabulary_.iteritems()}
     sorted_indices = np.argsort(z_scores)
     return_list = []
